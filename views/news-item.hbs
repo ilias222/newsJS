@@ -1,0 +1,40 @@
+{{#if inews}}
+<div class="my-news-box" style="
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 50px 10px;
+">
+<div class="my-news-box-item1">
+<img src="{{inews.cover}}" class="d-block mx-lg-auto img-fluid"
+alt="{{inews.title}}" width="700" height="500" loading="lazy">
+</div>
+<div class="col-lg-6" style="
+    margin: 10px 0px;
+    padding: 30px;
+;">
+<h1 class="display-5 fw-bold lh-1 mb-3" style="
+    padding: 30px;
+">{{inews.title}}</h1>
+<div class="text-muted"></div>
+<div class="text-muted">
+
+</div>
+<p class="lead">{{inews.descript}}</p>
+</div>
+</div>
+<div class="jumbotron" style="background-color: gainsboro;">
+  <h1 class="display-4">Автор: {{inews.author}}</h1>
+  <p class="lead">Дата создания: {{inews.dadtaMess}}</p>
+  <hr class="my-4">
+  <p class="lead">
+    <a class="btn btn-primary btn-lg" href="http://localhost:3000/news/catalog/{{inews.idNew}}/comment" 
+    role="button">
+    Комментарии
+    </a>
+  </p>
+</div>
+{{else}}
+<h1>Новость не найдена!</h1>
+{{/if}}

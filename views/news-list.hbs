@@ -1,0 +1,34 @@
+<section>
+  <nav>
+    <button class="my-news">Мои новости</button>
+    <button class="new-news">Сначала новые</button>
+  </nav>
+</section>
+{{#if news}}
+<div class="row" style="margin: 10px;">
+    {{#each news}}
+    <div class="col" id="news_{{this.id}}">
+          <div class="card shadow-sm">
+            <a href="http://localhost:3000/news/catalog/{{this.id}}">
+                <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="http://localhost:3000{{this.cover}}" role="img" aria-label="Placeholder: Эскиз" preserveAspectRatio="xMidYMid slice" focusable="false">
+            </a>
+            <div class="card-body">
+                <h5 class="cart-title">{{this.title}}</h5>
+              <p class="card-text">{{this.descript}}</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                    <h6 class="card-subtitle">Автор: {{this.author}}</h6>
+                    <h6 class="card-subtitle">Дата создания: {{this.dadtaMess}}</h6>
+                  <a href="http://localhost:3000/news/catalog/{{this.idNew}}">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Смотреть</button>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    {{/each}}
+</div>
+{{else}}
+<h1>Список новостей пуст</h1>
+{{/if}}

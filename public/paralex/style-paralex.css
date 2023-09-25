@@ -1,0 +1,10 @@
+img.p-fon {
+    position: relative;
+}
+
+img.p-item-1 {
+    position: absolute;
+    left: 200px;
+    top: 600px;
+    z-index: 1;
+}

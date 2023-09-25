@@ -1,0 +1,16 @@
+<section class="create-news">
+    <form
+    method="post" 
+    enctype="multipart/form-data"
+    action="http://localhost:3000/news/create"
+    class="form-create-news"
+    style="display: flex; flex-direction: column; margin: 30px;"
+    >
+        <input type="file" name="file" class="images-title-news" accept="image/*" style="margin: 10px;">
+        <input type="text" class="title-news" name="title" placeholder="Заголовок новости" style="margin: 10px;">
+        <textarea class="descript-news" name="descript" cols="30" rows="10" placeholder="Текст новости" 
+        style="margin: 10px;"></textarea>
+        <input type="submit" style="margin: 10px;">
+    </form>
+</section>
+<script src="/js/create-news.js"></script>

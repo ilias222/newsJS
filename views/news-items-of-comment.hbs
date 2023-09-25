@@ -1,0 +1,132 @@
+<div class="my-news-box" style="
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 50px 10px;
+">
+<div class="my-news-box-item1">
+<img src="{{newsItem.cover}}" class="d-block mx-lg-auto img-fluid"
+alt="{{newsItem.title}}" width="700" height="500" loading="lazy">
+</div>
+<div class="col-lg-6" style="
+    margin: 10px 0px;
+    padding: 30px;
+;">
+<h1 class="display-5 fw-bold lh-1 mb-3 title-news" id="{{newsItem.idNew}}"" style="
+    padding: 30px;
+">{{newsItem.title}}</h1>
+<div class="text-muted"></div>
+<div class="text-muted">
+
+</div>
+<p class="describ-news">{{newsItem.descript}}</p>
+</div>
+</div>
+
+  <form method="post" enctype="application/json"
+  action="http://localhost:3000/news/reading"
+    class="formNews" style="display: none; flex-direction: column">
+      <textarea name="title" class="titleNewsF" cols="10" rows="5"></textarea>
+      <textarea name="descript" class="descriptNewsF" cols="10" rows="5"></textarea>
+      <textarea name="text" class="textsNewsF" cols="50" rows="25"></textarea>
+      <input type="text" name="id" value="{{newsItem.id}}" style="display: none">
+      <input type="submit">
+    </form>
+  </div>
+</div>
+
+<div class="jumbotron" style="background-color: gainsboro;">
+  <h1 class="display-4 author-news" id="{{newsItem.author}}">Автор: {{newsItem.author}}</h1>
+  <p class="lead">Дата создания: {{newsItem.dadtaMess}}</p>
+  <hr class="my-4">
+    <button type="button" name="idNews" 
+    class="btn btn-sm btn-outline-secondary commen">Редактировать</button>
+    <button id="{{newsItem.idNew}}" class="deletes">Удалить Новость</button>
+  </div>
+
+<script type="module" src="/js/DOOMread-news.js"></script>
+
+
+<form 
+method="post" 
+enctype="multipart/form-data"
+action="http://localhost:3000/news-comments/create"
+class="new-comments-create-form">
+
+
+    <div class="coments-user" style="
+    border: solid 1px;
+    padding: 30px;
+    margin: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    ">
+    <div class="input-group mb-3">
+  <input type="file" name='comments' id='avatar' class="cover-comment">
+</div>
+<div class="input-group mb-3">
+</div>
+<div class="input-group">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="{{userid.user.id}}">Ваш комментарий</span>
+  </div>
+  <textarea id="user-comment" name='message' class="form-control form-control-mess" aria-label="With textarea"></textarea>
+</div>
+<input tpe="text" name="uuidNews" value="{{newsItem.id}}" style="display: none">
+<input type="submit" id='comment-bottom' class="btn btn-primary">
+</div>
+</form>
+
+{{#if commentsItem}}
+<div class="row" style="margin: 10px;">
+    {{#each commentsItem}}
+    <div class="col">
+          <div class="card shadow-sm">
+                {{#if this.cover}}
+                <img class="bd-placeholder-img card-img-top" src="{{this.cover}}"
+                style="width: 100px; height: 100px">
+                {{else}}
+                <img class="bd-placeholder-img card-img-top" src="http://localhost:3000/comments/3380322.png"
+                style="width: 100px; height: 100px">
+                {{/if}}
+            </a>
+            <form method="post" enctype="text/plain"
+                action="http://localhost:3000/news-comments/redact" 
+                class="form-{{this.id}} create-comment"
+                style="display: none;">
+                <textarea name='message' class="textarea-comment-{{this.id}}" cols="30" rows="10"></textarea>
+                {{!-- Убрать!!!!!!!!!!!!!!! --}}
+                <input type="text" name='id' class="idComment-comment-{{this.id}}" value="{{this.id}}" style="display: none;">
+                <input class="form-button-{{this.id}}" type="submit">
+              </form>
+            <div class="card-body">
+                <h5 class="cart-title">{{this.nameuser}}</h5>
+              <p class="card-text-{{this.id}}">{{this.message}}</p>
+
+
+              <div class="d-flex justify-content-between align-items-center">
+                 <h6 class="card-subtitle">Дата создания: {{this.createAt}}</h6>
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Комментировать</button>
+                <div class="btn-group">
+                  <button type="button" name="{{this.id}}" id="id-comment-{{this.id}}" class="class-comment-create-{{this.id}}">
+                    Редактировать
+                    </button>
+                    <button type="button" name="delete-{{this.id}}" class="class-comment-delete-{{this.id}}">
+                    Удалить
+                    </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    {{/each}}
+</div>
+{{else}}
+<h1>Пока нет комментариев</h1>
+{{/if}}
+<script src="/js/comment_JS.js"></script>
+<script src="/js/delete-News.js"></script>
+<script src="/js/comment-create.js"></script>
+<script src="/js/ui-roles.js"></script>

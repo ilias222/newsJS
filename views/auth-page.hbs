@@ -1,0 +1,51 @@
+<div class="auth-sectionIn" style="display: block;">
+    <form 
+    method="post" 
+    enctype="application/json"
+    action="http://localhost:3000/users/authorise"
+    class="formNews" 
+    style="display: flex; flex-direction: column">
+
+    <input type="email" class="emeil" name="email" placeholder="Адрес почты">
+    <input type="pasword" class="pasword" name="password" placeholder="Пароль">
+    <input type="submit">
+
+    </form>
+    <button class="nexts">Зарегистрироваться</button>
+</div>
+
+<div class="auth-sectionUp" style="display: none;">
+    <form 
+    method="post" 
+    enctype="application/json"
+    action="http://localhost:3000/users"
+    class="formNews" 
+    style="display: flex; flex-direction: column">
+    <input type="file" class="avatar-user" name="cover">
+    <input type="text" class="names1" name="firstName" placeholder="Имя">
+    <input type="text" class="names2" name="lastName" placeholder="Фамилия">
+    <input type="email" class="emeilR" name="email" placeholder="Адрес почты">
+    <input type="pasword" class="pass-user" name="password" placeholder="Пароль">
+    <input type="submit" class="submit-user-create">
+
+    </form>
+    <button class="prevs">Я уже зарегистрирован</button>
+</div>
+
+<script>
+
+const formLogin = document.querySelector('.auth-sectionIn');
+const formAuth = document.querySelector('.auth-sectionUp');
+
+document.querySelector('.nexts').addEventListener('click', (e) => {
+  formLogin.style.display = 'none';
+  formAuth.style.display ='block';
+});
+
+document.querySelector('.prevs').addEventListener('click', (e) => {
+  formAuth.style.display ='none';
+  formLogin.style.display = 'block';
+})
+</script>
+
+<script src="/js/user-create.js"></script>

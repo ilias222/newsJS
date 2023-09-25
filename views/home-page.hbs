@@ -1,0 +1,35 @@
+{{#if use}}
+<section class="profile" style="display: flex; flex-direction: column; justify-content: center; align-items: center; margin: 30px;">
+    <figure class="title-profil" style="margin: 30px 0px;">
+    <img src="{{use.cover}}" alt="Avatar">
+    <h2 class="user-name">{{use.firstName}} {{use.lastName}}</h2>
+    </figure>
+
+    <form class="news-list" style="margin: 10px;">
+    <h3>Мои новости</h3>
+    <div class="appNews">
+        
+    </div>
+    </form>
+
+    <h3 style="margin: 10px;">
+        Категории новостей
+        </h3>
+
+    <button class="buton-create-news">Создать новую <span>+</span></button>
+    <form
+    method="post" 
+    enctype="application/json"
+    action="http://localhost:3000/news/create"
+    class="form-create-news"
+    style="display: flex; flex-direction: column; margin: 30px;"
+    >
+    </form>
+    
+</section>
+<script src="/js/home-page.js"></script>
+<script src="/js/create-news.js"></script>
+
+    {{else}}
+        <p>No Object</p>
+    {{/if}}
